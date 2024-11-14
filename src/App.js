@@ -1,28 +1,30 @@
 import React from 'react';
-import   Form  from './components/forms/Form';
+import   {Form}  from './components/forms/Form';
 import Input  from './components/input/Input';
 import Button  from './components/Button';
-import { useFormContext } from './components/context/FormContext';
+
 import"./App.css"
  const App = () => {
-  const { formValues } = useFormContext();
+
   
-  const handleSubmit = () => {
+  const handleUserSubmit = (values) => {
     // handle form submission logic here
     console.log('Form submitted!');
-    console.log(formValues);
+    console.log(values);
 
   };
 
   return (
     <div className='App'>
   
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleUserSubmit}>
         <h1>Registration Form</h1>
-        <Input name="username" placeholder="Username" />
-        <Input name="email" type="email" placeholder="Email" />
-        <Input name="password" type="password" placeholder="Password" />
-        <Button>Submit</Button>
+        <Input name="firstName" label="First Name"/>
+        <Input name="lastName" label="Last Name"/>
+        <Input name="email" label="Email" type="email"/>
+        <Button onClick={onsubmit}>submit</Button>
+        {/* <Form.Submit label="register"/>
+         */}
       </Form>
     
     </div>

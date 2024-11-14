@@ -1,25 +1,23 @@
 import React from 'react';
-import  Field  from '../Field';
 
- const Input = ({ name, type = 'text', placeholder }) => {
-  return (
-    <Field name={name}>
-      {({ value, error, onChange }) => (
-        <div>
-          <input
-            type={type}
-            name={name}
-            value={value}
-            placeholder={placeholder}
-            onChange={onChange}
-            className={`input ${error ? 'input-error' : ''}`}
-            required
-          />
-          {error && <div className="error">{error}</div>}
-        </div>
-      )}
-    </Field>
-  );
-};
+
+ const Input = ({ name,label, type = 'text', values,errors,handleChange }) => (
+  <div>
+  {console.log("VALUES IN INPUT",values)}
+
+  <label htmlFor={name}>{label}</label>
+  <input
+    type={type}
+    id={name}
+    name={name}
+    value={values[name] || ''}
+  
+    onChange={(e)=>handleChange(name,e.target.value)}
+    style={{display:'block',marginTop:'0.5rem'}}
+  />
+  {errors[name] && <div style={{color:'red'}}>{errors[name]}</div>}
+</div>
+ )
+ 
 
 export default Input
