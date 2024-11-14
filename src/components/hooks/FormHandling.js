@@ -10,8 +10,8 @@ setValues(prevValues=>({...prevValues,[name]:value}))
 const handleValidation = ()=>{
 
 const newErrors={};
-Object.keys(validations).forEach(field=>{
-    if(validations[field].required && [values[field]]){
+Object.keys(validations).forEach((field)=>{
+    if(validations[field].required && !values[field].trim()){
         newErrors[field]=`${field} is required`;
     }  
 });
